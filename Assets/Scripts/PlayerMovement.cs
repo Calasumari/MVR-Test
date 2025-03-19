@@ -15,9 +15,18 @@ public class PlayerMovement : MonoBehaviour
     float horizontalIn;
     float verticalIn;
 
+    float prevVelocityX;
+    float prevVelocityZ;
+    float currentVelocityX;
+    float currentVelocityY;
+
     Vector3 moveDirection;
+    
 
     Rigidbody rb;
+
+    public float acceleration;
+    public float deceleration;
 
 
     // Start is called before the first frame update
@@ -25,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        acceleration = 0.1f;
 
     }
 
@@ -34,8 +44,11 @@ public class PlayerMovement : MonoBehaviour
         maxSpeed();
     }
 
+   
+
     private void FixedUpdate()
     {
+        
         Move();
     }
 
@@ -47,9 +60,27 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        moveDirection = direction.forward * verticalIn + direction.right * horizontalIn;
+        moveDirection = (direction.forward * verticalIn + direction.right * horizontalIn) * acceleration;
         rb.AddForce(moveDirection.normalized * moveSpeed * 1f, ForceMode.Force);
         rb.drag = dragForce;
+        if (acceleration < 1.0f)
+        {
+            /*float velocityX = prevVelocityX - rb.velocity.x;
+            float velocityZ = prevVelocityZ - rb.velocity.z;
+            float avgVelocity = (velocityX + velocityZ) / 2;
+            acceleration = avgVelocity * Time.deltaTime;
+
+            if (acceleration < 0f)
+            {
+                acceleration = acceleration + (2 * acceleration);
+            }
+            Debug.Log(acceleration);*/
+
+            acceleration += 0.1f;
+        }
+        prevVelocityX = rb.velocity.x;
+        prevVelocityZ = rb.velocity.z;
+        Debug.Log(prevVelocityX + ", 0, " + prevVelocityZ); 
     }
 
     void maxSpeed()
@@ -61,4 +92,16 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
         }
     }
+
+    /*float acceleration()
+    {
+        Vector3 currentVelocity = rb.velocity;
+        Vector3 baseVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        float accelerationTemp = (currentVelocity.normalized - baseVelocity.normalized) / Time.deltaTime;
+    }
+
+    void decelaration()
+    {
+
+    }*/
 }
