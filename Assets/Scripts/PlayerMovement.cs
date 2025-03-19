@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = (direction.forward * verticalIn + direction.right * horizontalIn) * acceleration;
         rb.AddForce(moveDirection.normalized * moveSpeed * 1f, ForceMode.Force);
         rb.drag = dragForce;
-        if (acceleration < 1.0f)
+        /*if (acceleration < 1.0f)
         {
             /*float velocityX = prevVelocityX - rb.velocity.x;
             float velocityZ = prevVelocityZ - rb.velocity.z;
@@ -74,10 +74,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 acceleration = acceleration + (2 * acceleration);
             }
-            Debug.Log(acceleration);*/
+            Debug.Log(acceleration);
 
-            acceleration += 0.1f;
-        }
+            acceleration += 0.01f;
+        }*/
         prevVelocityX = rb.velocity.x;
         prevVelocityZ = rb.velocity.z;
         Debug.Log(prevVelocityX + ", 0, " + prevVelocityZ); 
@@ -93,15 +93,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /*float acceleration()
-    {
-        Vector3 currentVelocity = rb.velocity;
-        Vector3 baseVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        float accelerationTemp = (currentVelocity.normalized - baseVelocity.normalized) / Time.deltaTime;
-    }
-
-    void decelaration()
-    {
-
-    }*/
 }
