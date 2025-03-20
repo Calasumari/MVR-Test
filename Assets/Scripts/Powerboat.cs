@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Powerboat : MonoBehaviour
 {
+
+    //public Collision collision;
+
     //Variables
     public float moveSpeed;
     public Transform direction;
@@ -30,6 +33,7 @@ public class Powerboat : MonoBehaviour
         MyInput();
         MaxSpeed();
         Debug.Log(Time.deltaTime);
+      
     }
 
     private void FixedUpdate()
@@ -65,4 +69,6 @@ public class Powerboat : MonoBehaviour
         // acceleration calculation
         return 0f;
     }
+
+   
 }
