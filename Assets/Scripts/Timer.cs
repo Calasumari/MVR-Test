@@ -29,6 +29,7 @@ public class Timer : MonoBehaviour
     {   
         timeNum = timeNum + Time.deltaTime;
         Debug.Log(timeNum);
-        playTime = timeNum.ToString();
+        string timeDisplay = timeNum.ToString();
+        playTime = timeDisplay;
     }
 }

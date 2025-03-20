@@ -8,6 +8,7 @@ public class FollowPath : MonoBehaviour
     //tutorial followed from https://www.youtube.com/watch?v=11ofnLOE8pw
 
     [SerializeField] private Transform[] routes;
+    [SerializeField] private Transform follow;
 
     private int routeToGo;
 
@@ -63,15 +64,24 @@ public class FollowPath : MonoBehaviour
 
             Vector3 movementDirection = objectPosition - transform.position;
 
-            if (movementDirection != Vector3.zero)
+            //-------------------------------------------------------------------//
+            //Considered alternative for rotation//
+
+            /*if (movementDirection != Vector3.zero)
             {
                 Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-            }
+            } */
 
-            transform.position = objectPosition;
-            yield return new WaitForEndOfFrame();
-        }
+            //-------------------------------------------------------------------//
+
+            /*  transform.position = objectPosition;
+             follow.position = objectPosition * 2;
+             Vector3 followPosition = new Vector3(follow.position.x, 0f, follow.position.z);
+             transform.LookAt(followPosition) */
+
+            yield return new WaitForEndOfFrame(); 
+        } 
 
         tParam = 0;
         speedModifier = speedModifier * 0.90f;
