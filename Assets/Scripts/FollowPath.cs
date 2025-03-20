@@ -75,10 +75,10 @@ public class FollowPath : MonoBehaviour
 
             //-------------------------------------------------------------------//
 
-            /*  transform.position = objectPosition;
-             follow.position = objectPosition * 2;
-             Vector3 followPosition = new Vector3(follow.position.x, 0f, follow.position.z);
-             transform.LookAt(followPosition) */
+            transform.position = objectPosition;
+            /*follow.position = objectPosition * 2;
+            Vector3 followPosition = new Vector3(follow.position.x, 0f, follow.position.z);
+            transform.LookAt(followPosition);*/
 
             yield return new WaitForEndOfFrame(); 
         } 

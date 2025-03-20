@@ -60,7 +60,7 @@ public class FinalScreen : MonoBehaviour
         bg.SetActive (true);
         timerText.SetActive (false);
         //finalScore.SetActive (true);
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
     }
