@@ -41,6 +41,7 @@ public class Powerboat : MonoBehaviour
         Move();
     }
 
+    //using axis vs using key input means it naturally has acceleration/decelaration + can account for controller input
     void MyInput()
     {
         horizontalIn = Input.GetAxisRaw("Horizontal");
@@ -64,11 +65,6 @@ public class Powerboat : MonoBehaviour
         }
     }
 
-    public float acceleration()
-    {
-        // acceleration calculation
-        return 0f;
-    }
 
    
 }
