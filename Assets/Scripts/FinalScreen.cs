@@ -39,7 +39,7 @@ public class FinalScreen : MonoBehaviour
             }
             else
             {
-                countdown--;
+                countdown += 1;
                 Debug.Log(countdown);
             }
             

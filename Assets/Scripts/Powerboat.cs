@@ -32,7 +32,7 @@ public class Powerboat : MonoBehaviour
     {
         MyInput();
         MaxSpeed();
-        Debug.Log(Time.deltaTime);
+        //Debug.Log(Time.deltaTime);
       
     }
 
